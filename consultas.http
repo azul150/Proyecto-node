@@ -1,0 +1,83 @@
+### obtener todos los autores
+GET http://localhost:5000/autores HTTP/1.1
+
+### obtener autor por id
+GET http://localhost:5000/autores/2 HTTP/1.1
+
+### obtener todas las editoriales
+GET http://localhost:5000/editoriales HTTP/1.1
+
+### obtener editorial por id
+GET http://localhost:5000/editoriales/1 HTTP/1.1
+
+### obtener todas las categorias
+GET http://localhost:5000/categorias HTTP/1.1
+
+### obtener categoria por id
+GET http://localhost:5000/categorias/1 HTTP/1.1
+
+### obtener todos los usuarios
+GET http://localhost:5000/usuarios HTTP/1.1
+
+### obtener usuario por id
+GET http://localhost:5000/usuarios/1 HTTP/1.1
+
+### obtener todos los bibliotecarios
+GET http://localhost:5000/bibliotecarios HTTP/1.1
+
+### obtener bibliotecario por id
+GET http://localhost:5000/bibliotecarios/1 HTTP/1.1
+
+### obtener todos los libros
+GET http://localhost:5000/libros HTTP/1.1
+
+### obtener libro por id
+GET http://localhost:5000/libros/1 HTTP/1.1
+
+### obtener libros completos
+GET http://localhost:5000/libros/completos HTTP/1.1
+
+### obtener libros por autor
+GET http://localhost:5000/libros/autor/1 HTTP/1.1
+
+### obtener libros por editorial
+GET http://localhost:5000/libros/editorial/1 HTTP/1.1
+
+### obtener libros por categoria
+GET http://localhost:5000/libros/categoria/1 HTTP/1.1
+
+### obtener todos los prestamos
+GET http://localhost:5000/prestamos HTTP/1.1
+
+### obtener prestamo por id
+GET http://localhost:5000/prestamos/1 HTTP/1.1
+
+### obtener prestamos completos
+GET http://localhost:5000/prestamos/completos HTTP/1.1
+
+### obtener prestamos por usuario
+GET http://localhost:5000/prestamos/usuario/1 HTTP/1.1
+
+### obtener prestamos por bibliotecario
+GET http://localhost:5000/prestamos/bibliotecario/1 HTTP/1.1
+
+### obtener todos los detalles de prestamo
+GET http://localhost:5000/detalle-prestamo HTTP/1.1
+
+### obtener detalle por id
+GET http://localhost:5000/detalle-prestamo/1 HTTP/1.1
+
+### obtener detalles por prestamo
+GET http://localhost:5000/detalle-prestamo/prestamo/1 HTTP/1.1
+
+### obtener todas las multas
+GET http://localhost:5000/multas HTTP/1.1
+
+### obtener multa por id
+GET http://localhost:5000/multas/1 HTTP/1.1
+
+### obtener multas completas
+GET http://localhost:5000/multas/completas HTTP/1.1
+
+### obtener multas por prestamo
+GET http://localhost:5000/multas/prestamo/1 HTTP/1.1
