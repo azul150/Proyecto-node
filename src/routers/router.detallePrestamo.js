@@ -22,6 +22,13 @@ const getRouterDetallePrestamo = (controllerDB = null) => {
         res.send(resp);
     });
 
+        // POST
+    router.post('/', (req, res) => {
+        const { id_prestamo, id_libro } = req.body;
+        const nuevoDetalle = model.create({ id_prestamo, id_libro });
+        res.status(201).json(nuevoDetalle);
+    });
+
     return router;
 }
 

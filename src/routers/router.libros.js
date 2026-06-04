@@ -39,6 +39,13 @@ const getRouterLibros = (controllerDB = null) => {
         res.send(resp);
     });
 
+    // POST
+    router.post('/', (req, res) => {
+        const { titulo, id_autor, id_editorial, id_categoria } = req.body;
+        const nuevoLibro = model.create({ titulo, id_autor, id_editorial, id_categoria });
+        res.status(201).json(nuevoLibro);
+    });
+
     return router;
 }
 

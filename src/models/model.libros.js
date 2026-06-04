@@ -1,5 +1,5 @@
 function modelLibros(dbController = null) {
-    const { open, get: getOne, all, close } = dbController
+    const { open, get: getOne, all, run, close } = dbController
 
     function getAll() {
         open()
@@ -55,7 +55,22 @@ function modelLibros(dbController = null) {
         return registros
     }
 
-    return { getAll, get, getByAutor, getByEditorial, getByCategoria, getLibrosCompletos }
+     // CREATE
+    function create(libro) {
+        open()
+        const query = "insert into libros (titulo, id_autor, id_editorial, id_categoria) values (?, ?, ?, ?);"
+        const resultado = run(query, [libro.titulo, libro.id_autor, libro.id_editorial, libro.id_categoria])
+        close()
+        return { 
+            id_libro: resultado.lastID, 
+            titulo: libro.titulo,
+            id_autor: libro.id_autor,
+            id_editorial: libro.id_editorial,
+            id_categoria: libro.id_categoria
+        }
+    }
+
+    return { getAll, get, getByAutor, getByEditorial, getByCategoria, getLibrosCompletos, create }
 }
 
 export default modelLibros;

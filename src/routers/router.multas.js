@@ -27,6 +27,13 @@ const getRouterMultas = (controllerDB = null) => {
         res.send(resp);
     });
 
+        // POST
+    router.post('/', (req, res) => {
+        const { id_prestamo, monto } = req.body;
+        const nuevaMulta = model.create({ id_prestamo, monto });
+        res.status(201).json(nuevaMulta);
+    });
+
     return router;
 }
 

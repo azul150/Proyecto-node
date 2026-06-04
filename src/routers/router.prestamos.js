@@ -33,6 +33,13 @@ const getRouterPrestamos = (controllerDB = null) => {
         res.send(resp);
     });
 
+    // POST
+    router.post('/', (req, res) => {
+        const { id_usuario, id_bibliotecario, fecha_salida } = req.body;
+        const nuevoPrestamo = model.create({ id_usuario, id_bibliotecario, fecha_salida });
+        res.status(201).json(nuevoPrestamo);
+    });
+
     return router;
 }
 

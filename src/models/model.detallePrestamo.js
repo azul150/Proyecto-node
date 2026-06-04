@@ -1,5 +1,5 @@
 function modelDetallePrestamo(dbController = null) {
-    const { open, get: getOne, all, close } = dbController
+    const { open, get: getOne, all, run, close } = dbController
 
     function getAll() {
         open()
@@ -25,7 +25,20 @@ function modelDetallePrestamo(dbController = null) {
         return registros
     }
 
-    return { getAll, get, getByPrestamo }
+    // CREATE
+    function create(detalle) {
+        open()
+        const query = "insert into detalle_prestamo (id_prestamo, id_libro) values (?, ?);"
+        const resultado = run(query, [detalle.id_prestamo, detalle.id_libro])
+        close()
+        return { 
+            id_detalle: resultado.lastID, 
+            id_prestamo: detalle.id_prestamo,
+            id_libro: detalle.id_libro
+        }
+    }
+
+    return { getAll, get, getByPrestamo, create }
 }
 
 export default modelDetallePrestamo;

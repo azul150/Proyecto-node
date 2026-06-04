@@ -16,6 +16,13 @@ const getRouterBibliotecarios = (controllerDB = null) => {
         res.send(resp);
     });
 
+     // POST
+    router.post('/', (req, res) => {
+        const { nombre, turno } = req.body;
+        const nuevoBibliotecario = model.create({ nombre, turno });
+        res.status(201).json(nuevoBibliotecario);
+    });
+
     return router;
 }
 

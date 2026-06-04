@@ -20,7 +20,7 @@ function controllerDbSqlite(dbFilePath) {
       return res;
     },
     all(sql, params = []) {
-      const res = db.prepare(sql).all();
+      const res = db.prepare(sql).all(params);
       return res;
     },
     close() {

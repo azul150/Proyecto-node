@@ -1,5 +1,5 @@
 function modelCategorias(dbController = null) {
-    const { open, get: getOne, all, close } = dbController
+    const { open, get: getOne, all, run, close } = dbController
 
     function getAll() {
         open()
@@ -17,7 +17,19 @@ function modelCategorias(dbController = null) {
         return registro
     }
 
-    return { getAll, get }
+     // CREATE
+    function create(categoria) {
+        open()
+        const query = "insert into categorias (nombre_categoria) values (?);"
+        const resultado = run(query, [categoria.nombre_categoria])
+        close()
+        return { 
+            id_categoria: resultado.lastID, 
+            nombre_categoria: categoria.nombre_categoria 
+        }
+    }
+
+    return { getAll, get, create }
 }
 
 export default modelCategorias;

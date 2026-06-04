@@ -1,5 +1,5 @@
 function modelEditoriales(dbController = null) {
-    const { open, get: getOne, all, close } = dbController
+    const { open, get: getOne, all, run, close } = dbController
 
     function getAll() {
         open()
@@ -17,7 +17,19 @@ function modelEditoriales(dbController = null) {
         return registro
     }
 
-    return { getAll, get }
+     // CREATE
+    function create(editorial) {
+        open()
+        const query = "insert into editoriales (nombre) values (?);"
+        const resultado = run(query, [editorial.nombre])
+        close()
+        return { 
+            id_editorial: resultado.lastID, 
+            nombre: editorial.nombre 
+        }
+        }
+
+    return { getAll, get, create }
 }
 
 export default modelEditoriales;

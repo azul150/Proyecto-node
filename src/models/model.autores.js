@@ -1,5 +1,5 @@
 function modelAutores(dbController = null) {
-    const { open, get: getOne, all, close } = dbController
+    const { open, get: getOne, all, run, close} = dbController
 
     function getAll() {
         open()
@@ -17,7 +17,19 @@ function modelAutores(dbController = null) {
         return registro
     }
 
-    return { getAll, get }
+    // CREATE
+    function create(autor) {
+        open()
+        const query = "insert into autores (nombre) values (?);"
+        const resultado = run(query, [autor.nombre])
+        close()
+        return { 
+            id_autor: resultado.lastID, 
+            nombre: autor.nombre 
+        }
+    }
+
+    return { getAll, get, create }
 }
 
 export default modelAutores;

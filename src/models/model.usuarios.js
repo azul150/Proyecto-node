@@ -1,5 +1,5 @@
 function modelUsuarios(dbController = null) {
-    const { open, get: getOne, all, close } = dbController
+    const { open, get: getOne, all, run, close } = dbController
 
     function getAll() {
         open()
@@ -17,7 +17,20 @@ function modelUsuarios(dbController = null) {
         return registro
     }
 
-    return { getAll, get }
+    // CREATE
+    function create(usuarios) {
+        open()
+        const query = "insert into usuarios (nombre, correo) values (?, ?);"
+        const resultado = run(query, [usuarios.nombre, usuarios.correo])
+        close()
+        return { 
+            id_usuario: resultado.lastID, 
+            nombre: usuarios.nombre,
+            correo: usuarios.correo
+        }
+    }
+
+    return { getAll, get, create }
 }
 
 export default modelUsuarios;

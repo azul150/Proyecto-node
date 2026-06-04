@@ -16,6 +16,13 @@ const getRouterUsuarios = (controllerDB = null) => {
         res.send(resp);
     });
 
+    // POST
+    router.post('/', (req, res) => {
+        const { nombre, correo } = req.body;
+        const nuevoUsuario = model.create({ nombre, correo });
+        res.status(201).json(nuevoUsuario);
+    });
+
     return router;
 }
 

@@ -1,5 +1,5 @@
 function modelMultas(dbController = null) {
-    const { open, get: getOne, all, close } = dbController
+    const { open, get: getOne, all, run, close } = dbController
 
     function getAll() {
         open()
@@ -38,7 +38,20 @@ function modelMultas(dbController = null) {
         return registros
     }
 
-    return { getAll, get, getByPrestamo, getMultasCompletas }
+    // CREATE
+    function create(multa) {
+        open()
+        const query = "insert into multas (id_prestamo, monto) values (?, ?);"
+        const resultado = run(query, [multa.id_prestamo, multa.monto])
+        close()
+        return { 
+            id_multa: resultado.lastID, 
+            id_prestamo: multa.id_prestamo,
+            monto: multa.monto
+        }
+    }
+
+    return { getAll, get, getByPrestamo, getMultasCompletas, create }
 }
 
 export default modelMultas;

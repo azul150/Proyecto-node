@@ -16,6 +16,13 @@ const getRouterCategorias = (controllerDB = null) => {
         res.send(resp);
     });
 
+    // POST
+    router.post('/', (req, res) => {
+        const { nombre_categoria } = req.body;
+        const nuevaCategoria = model.create({ nombre_categoria });
+        res.status(201).json(nuevaCategoria);
+    });
+
     return router;
 }
 

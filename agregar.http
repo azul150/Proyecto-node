@@ -1,0 +1,80 @@
+### Agregar un nuevo autor
+POST http://localhost:5000/autores HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Jose Jose"
+}
+
+### Agregar un nuevo bibliotecario
+POST http://localhost:5000/bibliotecarios HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Jose Perez",
+    "turno": "matutino"
+}
+
+### Agregar una nueva categoria
+POST http://localhost:5000/categorias HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre_categoria": "Anime"
+}
+
+### Agregar detalle_prestamo
+POST http://localhost:5000/detalle-prestamo HTTP/1.1
+Content-Type: application/json
+
+{
+    "id_prestamo": 1,
+    "id_libro": 1
+}
+
+### Agregar una nueva editorial
+POST http://localhost:5000/editoriales HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Editorial XYZ"
+}
+
+### Agregar un nuevo libro
+POST http://localhost:5000/libros HTTP/1.1
+Content-Type: application/json
+
+{
+    "titulo": "El Quijote",
+    "id_autor": 1,
+    "id_categoria": 1,
+    "id_editorial": 1
+}
+
+### Agregar multas
+POST http://localhost:5000/multas HTTP/1.1
+Content-Type: application/json
+
+{
+    "id_prestamo": 1,
+    "monto": 500
+}
+
+### Agregar un nuevo prestamo || Formato de fecha año-mes-dia
+POST http://localhost:5000/prestamos HTTP/1.1
+Content-Type: application/json
+
+{
+    "id_usuario": 5,
+    "id_bibliotecario": 3,
+    "fecha_salida": "2024-06-25"
+}
+
+### Agregar un nuevo usuario
+POST http://localhost:5000/usuarios HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Juan Pérez",
+    "correo": "juan.perez@example.com"
+}

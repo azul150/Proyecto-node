@@ -16,6 +16,13 @@ const getRouterAutores = (controllerDB = null) => {
         res.send(resp);
     });
 
+    // POST
+    router.post('/', (req, res) => {
+        const { nombre } = req.body;
+        const nuevoAutor = model.create({ nombre });
+        res.status(201).json(nuevoAutor);
+    });
+
     return router;
 }
 
